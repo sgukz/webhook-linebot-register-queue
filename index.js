@@ -17,7 +17,10 @@ restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
   let reply_token = req.body
-  reply(reply_token)
+  //reply(reply_token)
+  res.json({
+    data: JSON.stringify(reply_token)
+  })
   res.sendStatus(200)
 });
 
