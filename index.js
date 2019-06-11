@@ -62,7 +62,7 @@ restService.post("/webhook", function (req, res) {
               "action": {
                 "type": "uri",
                 "label": "ยืนยันลงทะเบียน",
-                "uri": "http://localhost:81/index.html?userId=" + userId
+                "uri": "http://localhost:81/reh-queue/index.html?userId=" + userId
               }
             }
           ]
