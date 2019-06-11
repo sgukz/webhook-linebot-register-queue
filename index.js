@@ -18,7 +18,7 @@ restService.post("/webhook", function (req, res) {
   let userMessage = req.body.events[0].message.text;
   let userId = req.body.events[0].source.userId;
   if (userMessage == "ลงทะเบียน") {
-    for(var i = 1; i <= 1; i++){
+    for(var i = 1; i <= 10; i++){
       let formatMessage = {
         type: "text",
         text: i
@@ -27,7 +27,7 @@ restService.post("/webhook", function (req, res) {
     }
     // let formatMessage = {
     //   "type": "flex",
-    //   "altText": "ลงทะเบียน",
+    //   "altText": "ยืนยันลงทะเบียนเพื่อรับข้อมูลข่าวสารจากโรงพยาบาลร้อยเอ็ด",
     //   "contents": {
     //     "type": "bubble",
     //     "styles": {
