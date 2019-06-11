@@ -14,9 +14,9 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
-  let callback = req.body;
+  let userId = req.body.originalDetectIntentRequest.payload.data.source.userId;
   res.json({
-    fulfillmentText:  JSON.stringify(callback),
+    fulfillmentText:  userId,
     source: "line"
   });
 });
