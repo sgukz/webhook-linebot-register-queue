@@ -15,8 +15,9 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
-  let msg = JSON.stringify(req.body)
-  reply(msg)
+  let userId = req.body.events[0].source.userId;
+  //let msg = JSON.stringify(req.body)
+  reply(userId)
   res.sendStatus(200)
 });
 function reply(msg) {
