@@ -18,59 +18,66 @@ restService.post("/webhook", function (req, res) {
   let userMessage = req.body.events[0].message.text;
   let userId = req.body.events[0].source.userId;
   if (userMessage == "ลงทะเบียน") {
-    let formatMessage = {
-      "type": "flex",
-      "altText": "ลงทะเบียน",
-      "contents": {
-        "type": "bubble",
-        "styles": {
-          "header": {
-            "backgroundColor": "#16a9ff"
-          }
-        },
-        "header": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "ลงทะเบียน",
-              "size": "md",
-              "weight": "bold",
-              "color": "#FFFFFF"
-            }
-          ]
-        },
-        "hero": {
-          "type": "image",
-          "url": "https://show-image.herokuapp.com/img/logo_reh.png",
-          "size": "md",
-          "aspectMode": "cover"
-        },
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "ลงทะเบียนเพื่อรับข้อมูลข่าวสาร",
-              "align": "center"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "ยืนยันลงทะเบียน",
-                "uri": "http://queueonline.reh.go.th/index.html?userId=" + userId
-              }
-            }
-          ]
-        }
+    for(var i = 1; i <= 1; i++){
+      let formatMessage = {
+        type: "text",
+        text: i
       }
-
+      reply(userId, formatMessage)
     }
-    reply(userId, formatMessage)
+    // let formatMessage = {
+    //   "type": "flex",
+    //   "altText": "ลงทะเบียน",
+    //   "contents": {
+    //     "type": "bubble",
+    //     "styles": {
+    //       "header": {
+    //         "backgroundColor": "#16a9ff"
+    //       }
+    //     },
+    //     "header": {
+    //       "type": "box",
+    //       "layout": "vertical",
+    //       "contents": [
+    //         {
+    //           "type": "text",
+    //           "text": "ลงทะเบียน",
+    //           "size": "md",
+    //           "weight": "bold",
+    //           "color": "#FFFFFF"
+    //         }
+    //       ]
+    //     },
+    //     "hero": {
+    //       "type": "image",
+    //       "url": "https://show-image.herokuapp.com/img/logo_reh.png",
+    //       "size": "md",
+    //       "aspectMode": "cover"
+    //     },
+    //     "body": {
+    //       "type": "box",
+    //       "layout": "vertical",
+    //       "contents": [
+    //         {
+    //           "type": "text",
+    //           "text": "ลงทะเบียนเพื่อรับข้อมูลข่าวสาร",
+    //           "align": "center"
+    //         },
+    //         {
+    //           "type": "button",
+    //           "style": "link",
+    //           "action": {
+    //             "type": "uri",
+    //             "label": "ยืนยันลงทะเบียน",
+    //             "uri": "http://queueonline.reh.go.th/index.html?userId=" + userId
+    //           }
+    //         }
+    //       ]
+    //     }
+    //   }
+
+    // }
+    // reply(userId, formatMessage)
     res.sendStatus(200)
   }
 });
