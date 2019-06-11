@@ -6,13 +6,11 @@ const axios = require('axios');
 const moment = require('moment');
 moment.locale('th');
 const restService = express("");
-const publicDir = require('path').join(__dirname, '/public');
 restService.use(
   bodyParser.urlencoded({
     extended: true
   })
 );
-restService.use(express.static(publicDir));
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
