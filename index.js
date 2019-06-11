@@ -16,6 +16,15 @@ restService.use(express.static(publicDir));
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function (req, res) {
+  let reply_token = req.body
+  reply(reply_token)
+  // res.json({
+  //   data: JSON.stringify(reply_token)
+  // })
+  res.sendStatus(200)
+});
+
+function reply(reply_token) {
   let headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer {Qg8Oxy7Paskgsph62kxIuKCI91vu/AIBada8UU7x/FY9oGK5ad8y3Xac0BeYZOdQFF3zG6rTTznGdABacEB1AZM4Hi7UaQ5riscja3LjH7NHN2EPh3eKvrNl3ANkyNVPMxAevnBvfvXIB4+KfoPkcwdB04t89/1O/w1cDnyilFU=}'
@@ -24,7 +33,7 @@ restService.post("/webhook", function (req, res) {
     to: "U0ce66a9d268b3f1d81d04b30631acc87",
     messages: [{
       "type": "text",
-      "text": "test"
+      "text": JSON.stringify(reply_token)
     }]
   });
   request.post({
@@ -34,11 +43,6 @@ restService.post("/webhook", function (req, res) {
   }, (err, res, body) => {
     console.log('status = ' + res.statusCode);
   });
-  res.sendStatus(200)
-});
-
-function reply(reply_token) {
-  
 }
 restService.listen(process.env.PORT || 8000, function () {
   console.log("Server up and listening");
