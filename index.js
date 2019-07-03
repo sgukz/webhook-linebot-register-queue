@@ -19,56 +19,35 @@ restService.post("/webhook", function (req, res) {
   let userId = req.body.events[0].source.userId;
   if (userMessage == "ลงทะเบียน") {
     let formatMessage = {
-      "type": "flex",
-      "altText": "ยืนยันลงทะเบียนเพื่อรับข้อมูลข่าวสารจากโรงพยาบาลร้อยเอ็ด",
-      "contents": {
-        "type": "bubble",
-        "styles": {
-          "header": {
-            "backgroundColor": "#16a9ff"
-          }
+      "type": "imagemap",
+      "baseUrl": "https://passathorn.files.wordpress.com/2019/07/linebot-imagemap-register.jpg?w=1040",
+      "altText": "ลงทะเบียนออนไลน์",
+      "baseSize": {
+        "width": 1040,
+        "height": 450
+      },
+      "actions": [
+        {
+          "type": "uri",
+          "area": {
+            "x": 44,
+            "y": 148,
+            "width": 947,
+            "height": 138
+          },
+          "linkUri": "http://queueonline.reh.go.th/index.html?userId=" + userId
         },
-        "header": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "ลงทะเบียน",
-              "size": "md",
-              "weight": "bold",
-              "color": "#FFFFFF"
-            }
-          ]
-        },
-        "hero": {
-          "type": "image",
-          "url": "https://show-image.herokuapp.com/img/logo_reh.png",
-          "size": "md",
-          "aspectMode": "cover"
-        },
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "ลงทะเบียนเพื่อรับข้อมูลข่าวสาร",
-              "align": "center"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "ยืนยันลงทะเบียน",
-                "uri": "http://queueonline.reh.go.th/index.html?userId=" + userId
-              }
-            }
-          ]
+        {
+          "type": "message",
+          "area": {
+            "x": 46,
+            "y": 294,
+            "width": 946,
+            "height": 138
+          },
+          "text": "Action 2"
         }
-      }
-
+      ]
     }
     reply(userId, formatMessage)
     res.sendStatus(200)
