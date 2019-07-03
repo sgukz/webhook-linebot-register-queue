@@ -111,48 +111,52 @@ restService.post("/webhook", function (req, res) {
       .then(resp => {
         let result = ""
         let data = resp.data;
-        result = data.pttype.code != "200" ? "คุณยังไม่ได้ลงทะเบียน" : data.pttype.ptname
-        let color = data.pttype.code != "200" ? "#f0ad4e" : "#4582EC;"
         let formatMessage = {
-          "type": "flex",
-          "altText": "ตรวจสอบสิทธิการรักษา",
-          "contents": {
-            "type": "bubble",
-            "styles": {
-              "header": {
-                "backgroundColor": color
-              }
-            },
-            "header": {
-              "type": "box",
-              "layout": "baseline",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "สิทธิการรักษา",
-                  "weight": "bold",
-                  "size": "md",
-                  "gravity": "top",
-                  "color": "#FFFFFF",
-                  "flex": 0
-                }
-              ]
-            },
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": result,
-                  "weight": "bold",
-                  "size": "xl",
-                  "align": "center"
-                }
-              ]
-            }
-          }
+          "type": "text",
+          "text": data.pttype.ptname
         }
+        // result = data.pttype.code != "200" ? "คุณยังไม่ได้ลงทะเบียน" : data.pttype.ptname
+        // let color = data.pttype.code != "200" ? "#f0ad4e" : "#4582EC;"
+        // let formatMessage = {
+        //   "type": "flex",
+        //   "altText": "ตรวจสอบสิทธิการรักษา",
+        //   "contents": {
+        //     "type": "bubble",
+        //     "styles": {
+        //       "header": {
+        //         "backgroundColor": color
+        //       }
+        //     },
+        //     "header": {
+        //       "type": "box",
+        //       "layout": "baseline",
+        //       "contents": [
+        //         {
+        //           "type": "text",
+        //           "text": "สิทธิการรักษา",
+        //           "weight": "bold",
+        //           "size": "md",
+        //           "gravity": "top",
+        //           "color": "#FFFFFF",
+        //           "flex": 0
+        //         }
+        //       ]
+        //     },
+        //     "body": {
+        //       "type": "box",
+        //       "layout": "vertical",
+        //       "contents": [
+        //         {
+        //           "type": "text",
+        //           "text": result,
+        //           "weight": "bold",
+        //           "size": "xl",
+        //           "align": "center"
+        //         }
+        //       ]
+        //     }
+        //   }
+        // }
         reply(userId, formatMessage)
         res.sendStatus(200)
       })
