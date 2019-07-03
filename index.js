@@ -161,6 +161,40 @@ restService.post("/webhook", function (req, res) {
         res.sendStatus(200)
       })
       .catch(error => console.log("Error :", error));
+  } else if (userMessage == "บริการ") {
+    let formatMessage = {
+      "type": "imagemap",
+      "baseUrl": "https://passathorn.files.wordpress.com/2019/07/linebot-imagemap-services.jpg?w=1040",
+      "altText": "บริการอื่นๆ",
+      "baseSize": {
+        "width": 1040,
+        "height": 450
+      },
+      "actions": [
+        {
+          "type": "message",
+          "area": {
+            "x": 44,
+            "y": 148,
+            "width": 947,
+            "height": 138
+          },
+          "text": "ตรวจสอบสิทธิการรักษา"
+        },
+        {
+          "type": "message",
+          "area": {
+            "x": 46,
+            "y": 294,
+            "width": 946,
+            "height": 138
+          },
+          "text": "ค่ารักษา"
+        }
+      ]
+    }
+    reply(userId, formatMessage)
+    res.sendStatus(200)
   }
 });
 
