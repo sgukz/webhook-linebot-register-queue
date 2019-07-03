@@ -20,7 +20,7 @@ restService.post("/webhook", function (req, res) {
   if (userMessage == "ลงทะเบียน") {
     let formatMessage = {
       "type": "imagemap",
-      "baseUrl": "https://passathorn.files.wordpress.com/2019/07/linebot-imagemap-register.jpg?w=1040",
+      "baseUrl": "https://passathorn.files.wordpress.com/2019/07/linebot-imagemap-register-v2.jpg?w=1040",
       "altText": "ลงทะเบียนออนไลน์",
       "baseSize": {
         "width": 1040,
