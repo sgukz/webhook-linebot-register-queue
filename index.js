@@ -57,10 +57,10 @@ restService.post("/webhook", function (req, res) {
       .then(resp => {
         let result = ""
         let data = resp.data;
-        result = data.dataParse.code != undefined ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
+        //result = data.dataParse.code != undefined ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
         let formatMessage = {
           "type": "text",
-          "text": result
+          "text": JSON.stringify(data)
         }
         reply(userId, formatMessage)
         res.sendStatus(200)
