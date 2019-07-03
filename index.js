@@ -51,6 +51,21 @@ restService.post("/webhook", function (req, res) {
     }
     reply(userId, formatMessage)
     res.sendStatus(200)
+  } else if (userMessage == "ตรวจสอบการลงทะเบียน") {
+    axios
+      .get("http://49.231.5.51:3000/checkRegister/" + userId)
+      .then(resp => {
+        let result = ""
+        let data = resp.data;
+        result = data.dataParse.code != undefined ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
+        let formatMessage = {
+          "type": "text",
+          "text": result
+        }
+        reply(userId, formatMessage)
+        res.sendStatus(200)
+      })
+      .catch(error => console.log("Error :", error));
   }
 });
 
