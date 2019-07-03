@@ -60,7 +60,7 @@ restService.post("/webhook", function (req, res) {
         result = data.dataParse.code != "400" ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
         let formatMessage = {
           "type": "text",
-          "text": JSON.stringify(data)
+          "text": result
         }
         reply(userId, formatMessage)
         res.sendStatus(200)
