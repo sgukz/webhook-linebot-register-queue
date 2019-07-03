@@ -57,7 +57,7 @@ restService.post("/webhook", function (req, res) {
       .then(resp => {
         let result = ""
         let data = resp.data;
-        result = data.dataParse.code != "400" ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
+        result = data.dataParse.code != "200" ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
         let formatMessage = {
           "type": "text",
           "text": result
