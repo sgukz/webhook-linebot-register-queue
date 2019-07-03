@@ -58,6 +58,7 @@ restService.post("/webhook", function (req, res) {
         let result = ""
         let data = resp.data;
         result = data.dataParse.code != "200" ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
+        color = data.dataParse.code != "200" ? "#f39c12" : "#28b463"
         let formatMessage = {
           "type": "flex",
           "altText": "ตรวจสอบการลงทะเบียน",
@@ -65,7 +66,7 @@ restService.post("/webhook", function (req, res) {
             "type": "bubble",
             "styles": {
               "header": {
-                "backgroundColor": "#28b463"
+                "backgroundColor": color
               }
             },
             "header": {
@@ -74,7 +75,7 @@ restService.post("/webhook", function (req, res) {
               "contents": [
                 {
                   "type": "text",
-                  "text": "แจ้งเตือน",
+                  "text": "แจ้งเตือนสถานะการลงทะเบียน",
                   "weight": "bold",
                   "size": "md",
                   "gravity": "top",
