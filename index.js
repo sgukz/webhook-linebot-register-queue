@@ -45,7 +45,7 @@ restService.post("/webhook", function (req, res) {
             "width": 946,
             "height": 138
           },
-          "text": "Action 2"
+          "text": "ตรวจสอบการลงทะเบียน"
         }
       ]
     }
