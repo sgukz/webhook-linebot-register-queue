@@ -59,8 +59,44 @@ restService.post("/webhook", function (req, res) {
         let data = resp.data;
         result = data.dataParse.code != "200" ? "คุณยังไม่ได้ลงทะเบียน" : "คุณลงทะเบียนแล้ว"
         let formatMessage = {
-          "type": "text",
-          "text": result
+          "type": "flex",
+          "altText": "ตรวจสอบการลงทะเบียน",
+          "contents": {
+            "type": "bubble",
+            "styles": {
+              "header": {
+                "backgroundColor": "#28b463"
+              }
+            },
+            "header": {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "แจ้งเตือน",
+                  "weight": "bold",
+                  "size": "md",
+                  "gravity": "top",
+                  "color": "#FFFFFF",
+                  "flex": 0
+                }
+              ]
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": result,
+                  "weight": "bold",
+                  "size": "xl",
+                  "align": "center"
+                }
+              ]
+            }
+          }
         }
         reply(userId, formatMessage)
         res.sendStatus(200)
